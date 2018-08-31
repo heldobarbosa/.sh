@@ -1,0 +1,10 @@
+---
+# Playbook para criar usuários
+- name: Criando usuários
+  hosts: all
+  vars:
+	- username: sysadmin
+# Aqui trabalhamos com variável, ou seja, rodando este playbook de forma simples será criado o usuário "sysadmin", porém se eu interagir na linha de comando apontando um "-e +variavel='nome do usuário desejado'" consigo criar usuário com qualquer nome que eu queira. 
+  tasks:
+	- name: Criando o usuario {{ username }}
+	  user: name={{ username }} shell=/bin/bash

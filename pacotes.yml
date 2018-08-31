@@ -1,0 +1,17 @@
+---
+# Instalar pacotes
+- name: Garantir a instalação de pacotes
+# Aqui o que vamos fazer com o playbook
+  hosts: devops docker
+# Para que sejam interpretados, os grupos devem ser configurados dentro do arquivo .cfkg
+  tasks:
+	-name: Instalando pacotes
+# Nome da tarefa
+	-apt: name={{ item }} update_cache=yes state=present
+# O módulo apt sinifica que algo será instalado, o comando "item" significa que ele irá interpretar o módulo a seguir. Além disso, o parametro "update_cache" é um "apt-get update", isso torna o playbook utilizável também para sistemas Debian
+	-with_items:
+# Este módulo dá a autonomia para que neste caso, sejam instalados vários pacotes
+	  - vim
+	  - nano
+	  - sl
+	  - ccze

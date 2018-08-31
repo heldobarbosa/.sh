@@ -1,0 +1,13 @@
+---
+# Playbook para padronizar resolv.conf
+- name: Padronizando o arquivo resolv.conf
+  hosts: all
+  tasks: 
+	- name: Padronizando o arquivo
+	- copy: src=resolv.conf dest=/etc/resolv.conf
+
+- name: Garantir a instalação de pacotes
+  hosts: devops docker
+  tasks:
+	- name: Instalando o pacote sl
+	  apt: name=sl update cache=yes state=present
